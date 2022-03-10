@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="view1PageDef"
+                Package="oracle.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.Integer" Name="ExecuteWithParams_p_sal" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="HRFacadeBean" id="HRFacadeBeanIterator"/>
+    <accessorIterator MasterBinding="HRFacadeBeanIterator" Binds="employeesFindBySal" RangeSize="25"
+                      DataControl="HRFacadeBean" BeanClass="oracle.model.Employees" id="employeesFindBySalIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="employeesFindBySalIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="p_sal" NDType="java.lang.Integer" NDValue="${bindings.ExecuteWithParams_p_sal}"/>
+    </action>
+    <attributeValues IterBinding="variables" id="p_sal">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_p_sal"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

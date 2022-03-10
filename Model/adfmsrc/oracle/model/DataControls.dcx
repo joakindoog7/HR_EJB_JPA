@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.10.47" id="DataControls"
+                    Package="oracle.model">
+  <AdapterDataControl id="HRFacadeBean" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="oracle.model.HRFacadeBean"
+                      BeanClass="oracle.model.HRFacadeBean" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="oracle.model.Departments"/>
+      <TypeInfo FullName="oracle.model.Employees"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.x" ejb-name="HRFacade" ejb-type="Session"
+                      ejb-business-interface="oracle.model.HRFacadeLocal" ejb-interface-type="local"
+                      initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      DataControlHandler="oracle.adf.model.adapter.bean.jpa.JPQLDataFilterHandler"
+                      AccessMode="scrollable" EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>
